@@ -19,8 +19,9 @@ class DataTable extends React.Component {
        
     }
    
-    
-
+    static getDerivedStateFromProps(props,state){
+        return {data: props.data}
+    }
     onShowSizeChange = (current, pageSize) => {
         console.log(current, pageSize);
         this.setState({data: this.state.data.slice(0,pageSize)})
@@ -75,7 +76,7 @@ class DataTable extends React.Component {
 
         return (
             <>
-                <Table columns={columns} dataSource={this.state.data.slice(0,20)} pagination={false} rowKey='key'/>
+                <Table columns={columns} dataSource={this.state.data.slice(0,20)} pagination={false}/>
                 <Pagination
                     onChange={this.changePage}
                     defaultPageSize={20}

@@ -23,11 +23,11 @@ const Beers = props => {
             let initialIndex = 0;
             let maxIndex = response[1]['data'].length;
 
-            const finalBeersList = response[0]['data'].map(beer => {
+            const finalBeersList = response[0]['data'].map((beer, index) => {
                 if(initialIndex === maxIndex){
                     initialIndex = 0;
                 }
-                const beerItem = {...beer, image:response[1]['data'][initialIndex]['image']}
+                const beerItem = {...beer, image:response[1]['data'][initialIndex]['image'], key: index}
                 initialIndex++;
                 return beerItem;
             });
