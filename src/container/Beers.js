@@ -5,6 +5,10 @@ import axios from "axios"
 import BeersPage from "../component/BeersPage";
 import * as API from "../service/APIConstants";
 
+/**
+ * This is a functional component of react. It fetches the data from URL. 
+ * And pass to its child component BeersPage as props.
+ */
 const Beers = props => {
     const [beersList, updateBeersList ] = useState([]);
 

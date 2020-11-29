@@ -10,15 +10,20 @@ import React from "react";
  */
 class DataTable extends React.Component {
 
-   
-    state = {
-        data: this.props.data
+    constructor(props){
+        super(props);
+        
+        this.state = {
+            data: this.props.data
+        }
+       
     }
+   
     
 
     onShowSizeChange = (current, pageSize) => {
         console.log(current, pageSize);
-        this.setState({data: this.state.data.splice(0,pageSize)})
+        this.setState({data: this.state.data.slice(0,pageSize)})
     }
 
     changePage = (current, pageSize) => {
@@ -29,44 +34,45 @@ class DataTable extends React.Component {
     render() {
         console.log(this.state.data)
         const columns = [
-        {
-            title: 'Id',
-            dataIndex: 'id',
-            key: 'id',
-        },
-        {
-            title: '',
-            dataIndex: 'image',
-            render: (url) => <img src={url} alt="beer image" height="48px" width="48px" />
-        },
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
-                // ...this.getColumnSearchProps('name'),
-        },
-        {
-            title: 'Style',
-            dataIndex: 'style',
-            key: 'style',
-        },
-        {
-            title: 'Ounces',
-            dataIndex: 'ounces',
-            key: 'ounces',
-        },
-        {
-            title: 'Abv',
-            dataIndex: 'abv',
-            key: 'abv',
-        },
-        {
-            title: 'Ibu',
-            dataIndex: 'ibu',
-            key: 'ibu',
-        },
-        
+            {
+                title: 'Id',
+                dataIndex: 'id',
+                key: 'id',
+            },
+            {
+                title: '',
+                dataIndex: 'image',
+                render: (url) => <img src={url} alt="beer image" height="48px" width="48px" />
+            },
+            {
+                title: 'Name',
+                dataIndex: 'name',
+                key: 'name',
+                    // ...this.getColumnSearchProps('name'),
+            },
+            {
+                title: 'Style',
+                dataIndex: 'style',
+                key: 'style',
+            },
+            {
+                title: 'Ounces',
+                dataIndex: 'ounces',
+                key: 'ounces',
+            },
+            {
+                title: 'Abv',
+                dataIndex: 'abv',
+                key: 'abv',
+            },
+            {
+                title: 'Ibu',
+                dataIndex: 'ibu',
+                key: 'ibu',
+            },
+            
         ];
+
         return (
             <>
                 <Table columns={columns} dataSource={this.state.data.slice(0,20)} pagination={false} rowKey='key'/>
